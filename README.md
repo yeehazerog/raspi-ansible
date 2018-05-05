@@ -1,3 +1,7 @@
+
+![Logo](./yZ_Logo.png){:height="50px" width="50px"}
+
+
 # raspi-ansible
 git repo to setup raspberries with ansible
 
