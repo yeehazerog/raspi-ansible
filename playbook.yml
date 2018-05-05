@@ -1,0 +1,10 @@
+---
+# file: playbook.yml
+
+- name: Ansible Playbook for configuring brand new Raspberry Pi
+  hosts: raspberries
+  gather_facts: True
+  roles:
+    - pi
+  remote_user: pi
+  become: yes
