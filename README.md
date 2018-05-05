@@ -1,6 +1,5 @@
 
-![Logo](./yZ_Logo.png){:height="50px" width="50px"}
-
+<img src="./yZ_Logo.png" width="100">
 
 # raspi-ansible
 git repo to setup raspberries with ansible
