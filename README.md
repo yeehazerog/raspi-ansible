@@ -6,3 +6,7 @@ git repo to setup raspberries with ansible
 3. Create SSH keys on ansible host `ssh-keygen -t rsa -b 4096 -C "<any comment>"`
 4. Copy SSH keys to RPI3 `ssh-copy-id username@IP-address` (RPI standard user is pi). Thx to <https://hvops.com/articles/ansible-post-install/> for the hint.
 
+## the ansible part
+
+Thanks to <http://justin.isamaker.com/ansible-pi/> for providing very nice playbooks to setup the raspberry. This was the basis for the work done here.
+
