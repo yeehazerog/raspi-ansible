@@ -1,12 +1,8 @@
 ---
-file: setup_jupyter.yml
+# file: jupyter/tasks/main.yml
 
-- name: Install Jupyter 
-  hosts: jupyter
-  become: true
-  tasks:
-    - name: Install Jupyter on Python 3
-      shell: "pip3 install --upgrade jupyter"
-      retries: 2
-      register: result
-      until: result|succeeded 
+- name: Install Jupyter on Python 3
+  shell: "pip3 install --upgrade jupyter"
+  retries: 2
+  register: result
+  until: result|succeeded 

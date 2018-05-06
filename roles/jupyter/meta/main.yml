@@ -1,0 +1,5 @@
+---
+# file: jupyter/meta/main.yml
+
+dependencies:
+  - { role: pi }
