@@ -31,3 +31,8 @@ This is what they are all for:
  * vars: Variables for the roles can be specified in this directory and used in your configuration files.
 
 Within all of the directories but the "files" and "templates", if a file called main.yml exists, its contents will be automatically added to the playbook that calls the role.
+
+## Jupyter installation
+
+The installation of jupyter requires you to have `python3-dev` installed. Also please consider the difference in using `pip` vs. `python -m pip` to install jupyter, read here for more info (https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
+
