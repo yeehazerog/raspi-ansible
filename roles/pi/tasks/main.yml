@@ -21,10 +21,10 @@
   become: yes
   become_method: sudo
 
-- name: 'Reboot'
-  become: yes
-  become_method: sudo
-  command: shutdown -r now "Ansible updates triggered"
-  async: 0
-  poll: 0
-  ignore_errors: true
+#- name: 'Reboot'
+#  become: yes
+#  become_method: sudo
+#  command: shutdown -r now "Ansible updates triggered"
+#  async: 0
+#  poll: 0
+#  ignore_errors: true

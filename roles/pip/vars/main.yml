@@ -1,0 +1,8 @@
+---
+# file: /pip/vars/main.yml
+
+pip_download_dest: /tmp
+pip_version:
+python: python3
+pip: pip3
+pip_proxy: ''

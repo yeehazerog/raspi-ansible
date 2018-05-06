@@ -8,3 +8,13 @@
     - pi
   remote_user: pi
   become: yes
+
+- name: Setup pip
+  hosts: jupyter
+  roles: 
+    - pip
+
+- name: Setup jupyter
+  hosts: jupyter
+  roles:
+    - jupyter

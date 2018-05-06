@@ -1,8 +1,54 @@
 ---
 # file: jupyter/tasks/main.yml
 
-- name: Install Jupyter on Python 3
-  shell: "pip3 install --upgrade jupyter"
-  retries: 2
-  register: result
-  until: result|succeeded 
+# Causes an error if we try and which something that doesn't exist so use this
+# as a workaround.
+#- name: Check to see if jupyter is already installed.
+#  command: "{{ jupyter }} --version"
+#  ignore_errors: true
+#  changed_when: false # read-only task
+#  check_mode: no
+#  register: jupyter_is_installed
+
+- name: Install pyhton dev.
+  apt: name={{ item }} state=present
+  with_items:
+    - python3-apt
+    - python3-pycurl
+    - python3-setuptools
+    - python3-dev
+  become: yes
+
+- name: Install jupyter.
+  command: "{{ python }} -m {{ pip }} install jupyter"
+#  pip: name={{ item }}
+#  with_items:
+#    - jupyter
+  become: yes
+#  when: jupyter_is_installed.rc != 0
+
+# $ jupyter --version
+- name: Check to see if jupyter is installed at the correct version.
+  shell: "{{ jupyter }} --version | awk '{print $2}'"
+  register: jupyter_installed_version
+  changed_when: false
+  check_mode: no
+  when: jupyter_version or (jupyter_version | lower) != "latest"
+
+- name: Install required version of jupyter.
+  command: "{{ python }} -m {{ pip }} install jupyter=={{ jupyter_version }}"
+#  command: "sudo {{ pip }} install jupyter"
+#  pip: name={{ item }}
+#  with_items:
+#    - jupyter
+  become: yes
+  when: jupyter_version and jupyter_installed_version.stdout != jupyter_version and (jupyter_version | lower) != "latest"
+
+#- name: create notebooks directory.
+#    file: path=/storage/docker/jupyter/notebooks mode=0777 state=directory
+
+#- name: start and enable jupyter
+#    systemd:
+#      name: jupyter
+#      enabled: yes
+#      state: started
