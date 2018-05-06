@@ -1,0 +1,5 @@
+---
+#file: jupyter/handlers/main.yml
+
+- name: Start Jupyter
+  service: name=jupyter state=started

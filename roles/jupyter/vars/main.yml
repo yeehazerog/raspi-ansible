@@ -1,9 +1,30 @@
 ---
 # file: /jupyter/vars/main.yml
 
-jupyter_version:
-jupyter: jupyter
 pip_version: 
 python: python3
 pip: pip
 pip_proxy: ''
+
+# Jupyter variables
+jupyter_version:
+jupyter: jupyter
+jupyter_datadir: 'storage/docker/jupyter/notebooks'
+#jupyter_config_filename: ''
+jupyter_config_filename: '{{ ansible_env.HOME }}/.jupyter/jupyter_notebook_config.py'
+
+# The port Jupyter server will be listening on.
+jupyter_port: 8888
+
+# The IP address Jupyter server will bind to.
+jupyter_ip: '*'
+
+# The default notebook password is 'jupyter' but should be overridden
+# with the one entered by the user (see 'jupyter_entered_password' below).
+jupyter_password: ''
+
+# This variable should be used to override the default password.
+jupyter_plaintext_password: ''
+
+# Whether to open the browser when the Jupyter server is started.
+jupyter_open_browser: no

@@ -21,11 +21,7 @@
 
 - name: Install jupyter.
   command: "{{ python }} -m {{ pip }} install jupyter"
-#  pip: name={{ item }}
-#  with_items:
-#    - jupyter
   become: yes
-#  when: jupyter_is_installed.rc != 0
 
 # $ jupyter --version
 - name: Check to see if jupyter is installed at the correct version.
@@ -37,17 +33,40 @@
 
 - name: Install required version of jupyter.
   command: "{{ python }} -m {{ pip }} install jupyter=={{ jupyter_version }}"
-#  command: "sudo {{ pip }} install jupyter"
-#  pip: name={{ item }}
-#  with_items:
-#    - jupyter
   become: yes
   when: jupyter_version and jupyter_installed_version.stdout != jupyter_version and (jupyter_version | lower) != "latest"
 
-#- name: create notebooks directory.
-#    file: path=/storage/docker/jupyter/notebooks mode=0777 state=directory
+- name: Create notebooks directory.
+  file: path={{ jupyter_datadir }} owner=pi group=pi state=directory
+  become: yes
+  notify: jupyter
+#    file:
+#      path: '/storage/docker/jupyter/notebooks'
+#      mode: 0777
+#      state: directory
 
-#- name: start and enable jupyter
+#- name: Check if jupyter config exists.
+#    stat: path={{ jupyter_config_filename }}
+#    register: stat_result_jupyter_config_file
+
+- name: Create Jupyter profile.
+  command: jupyter notebook --generate-config -y
+  args:
+    creates: '{{ jupyter_config_filename }}'
+#  when stat_result_jupyter_config_file.stat.exists == False
+
+- name: Apply Jupyter config
+  template:
+    src: jupyter_notebook_config.py.j2
+    dest: '{{ jupyter_config_filename }}'
+    mode: 0644
+    force: yes
+
+# Causes currently an error -> jupyter needs to be started manually
+#- name: Start application
+#  service: name=jupyter state=started
+
+#- name: Start and enable jupyter
 #    systemd:
 #      name: jupyter
 #      enabled: yes
