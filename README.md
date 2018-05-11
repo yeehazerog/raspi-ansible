@@ -21,6 +21,7 @@ This is a git repo to setup raspberries with ansible. All common tasks are done 
 > Thanks to the guys from [digitalocean for their nice summary of roles](https://www.digitalocean.com/community/tutorials/how-to-use-ansible-roles-to-abstract-your-infrastructure-environment).
 
 Roles are created fro everything that shall be setup (e.g. Jupyter). 
+
 7. In the roles a directory `jupyter` is created. 
 8. In 'jupyter' sub-directories `mkdir files handlers meta templates tasks vars` are placed.
 
