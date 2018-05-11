@@ -38,6 +38,17 @@ This is what they are all for:
 
 Within all of the directories but the "files" and "templates", if a file called main.yml exists, its contents will be automatically added to the playbook that calls the role.
 
+## The Docker part
+
+Wait, we have jsut setup Ansible - it will make sure that all our raspberries are setup in exactly the same way and then specific additions are made if needed to some of them. Now why do we need Docker and what for?
+
+> Automate Docker with Ansible
+> Ansible is the way to automate Docker in your environment. Ansible enables you to operationalize your Docker container build and deployment process in ways that you’re likely doing manually today, or not doing at all.
+> Ansible can model containers and non-containers at the same time. This is especially important, as containerized applications are nearly always talking to components — storage, database, networking — that are not containerized, and frequently not even containerizable. And with Ansible Tower, you can deploy your host environments, your containers, and your services with the push of a button.
+> [Source: Ansible.](https://www.ansible.com/integrations/containers/docker)
+
+In order to use Docker and Ansible, 'docker-py' needs to be available on the Ansible host 'pip install 'docker-py>=1.7.0'', and 'docker-compose' is needed as well 'pip install 'docker-compose>=1.7.0''.
+
 ## Interfaces to crypto exchanges
 
 Thanks to the amazing code published as [CCXT – CryptoCurrency eXchange Trading Library](https://github.com/ccxt/ccxt) the basis for getting the needed data is found. This section will deal with the addition of the relevant parts of that codebase.
