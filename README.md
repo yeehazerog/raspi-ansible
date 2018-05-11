@@ -4,6 +4,8 @@
 # raspi-ansible
 This is a git repo to setup raspberries with ansible. All common tasks are done under the **pi** role. Additional roles are created for further setup of the various RPI's.
 
+[Ansible](https://github.com/yeehazerog/raspi-ansible#the-ansible-part) | [CCTX](https://github.com/yeehazerog/raspi-ansible#interfaces-to-crypto-exchanges) | [Jupyter](https://github.com/yeehazerog/raspi-ansible#jupyter-installation)
+
 ## Preparation Steps
 
 1. Flash SD card with raspbian OS [raspbian-stretch-lite](https://downloads.raspberrypi.org/raspbian_lite_latest) using [etcher](https://etcher.io/)
