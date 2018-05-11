@@ -36,6 +36,11 @@ This is what they are all for:
 
 Within all of the directories but the "files" and "templates", if a file called main.yml exists, its contents will be automatically added to the playbook that calls the role.
 
+## Interfaces to crypto exchanges
+
+Thanks to the amazing code published as [CCXT – CryptoCurrency eXchange Trading Library](https://github.com/ccxt/ccxt) the basis for getting the needed data is found. This section will deal with the addition of the relevant parts of that codebase.
+
+
 ## Jupyter installation
 
 The installation of jupyter requires you to have `python3-dev` installed. Also please consider the difference in using `pip` vs. `python -m pip` to install jupyter, read here for more info (https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)
