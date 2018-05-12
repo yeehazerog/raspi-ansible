@@ -14,6 +14,12 @@
   roles: 
     - pip
 
+- name: Install docker
+  hosts: raspberries
+  become: yes
+  roles:
+    - docker
+
 - name: Setup jupyter
   hosts: jupyter
   roles:

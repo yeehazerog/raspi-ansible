@@ -6,7 +6,11 @@ This is a git repo to setup raspberries with ansible. All common tasks are done 
 
 [Ansible](https://github.com/yeehazerog/raspi-ansible#the-ansible-part) | [CCTX](https://github.com/yeehazerog/raspi-ansible#interfaces-to-crypto-exchanges) | [Jupyter](https://github.com/yeehazerog/raspi-ansible#jupyter-installation)
 
-## Preparation Steps
+## Setup the Ansible host
+
+1. Install pip 'sudo apt install pip'
+
+## Preparation Steps for the raspberries
 
 1. Flash SD card with raspbian OS [raspbian-stretch-lite](https://downloads.raspberrypi.org/raspbian_lite_latest) using [etcher](https://etcher.io/)
 2. Create an empty file (no extension necessary) named 'ssh' on the root folder of the SD card (to enable SSH access to RPI3)

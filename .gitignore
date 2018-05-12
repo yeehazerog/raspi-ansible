@@ -1,1 +1,6 @@
 hosts
+*.retry
+*~
+.DS_Store
+*/**.DS_Store
+*.cpy

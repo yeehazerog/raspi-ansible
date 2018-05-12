@@ -1,0 +1,19 @@
+---
+
+galaxy_info:
+  author: "yeeha zeroG"
+  description: "Install and Docker and optionally Docker Compose."
+  company:
+  license: "license (GPL-3.0)"
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: "Debian"
+      versions:
+        - "stretch"
+
+  categories:
+    - "packaging"
+    - "system"
+
+dependencies: []
