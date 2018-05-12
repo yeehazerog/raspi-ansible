@@ -53,6 +53,10 @@ Wait, we have jsut setup Ansible - it will make sure that all our raspberries ar
 
 In order to use Docker and Ansible, 'docker-py' needs to be available on the Ansible host 'pip install 'docker-py>=1.7.0'', and 'docker-compose' is needed as well 'pip install 'docker-compose>=1.7.0''.
 
+> Thanks to [Nick Janetakis ansible-docker](https://github.com/nickjj/ansible-docker) which provides an excellent source for the setup of docker.
+
+A role is added to ansible 'docker' which installs docker on the raspberry. The sources for information are stated in the respective yml files (e.g. where to find the apt key for docker)
+
 ## Interfaces to crypto exchanges
 
 Thanks to the amazing code published as [CCXT – CryptoCurrency eXchange Trading Library](https://github.com/ccxt/ccxt) the basis for getting the needed data is found. This section will deal with the addition of the relevant parts of that codebase.
