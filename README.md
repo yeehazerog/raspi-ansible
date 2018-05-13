@@ -6,9 +6,30 @@ This is a git repo to setup raspberries with ansible. All common tasks are done 
 
 [Ansible](https://github.com/yeehazerog/raspi-ansible#the-ansible-part) | [CCTX](https://github.com/yeehazerog/raspi-ansible#interfaces-to-crypto-exchanges) | [Jupyter](https://github.com/yeehazerog/raspi-ansible#jupyter-installation)
 
+## Ansible and Docker
+
+A quick introduction as to why those two are important for this project.
+
+> Ansible is a configuration management system used for application deployment.
+> Ansible can be understood as set of tools and, Ansible's playbooks as instructions manuals for their usage.
+> Ansible modules are accompanied by Playbooks that aid in the configuration and deployment to remote machines.
+> Ansible helps you to automate Docker and operationalize the container build and deployment process. 
+> Source: [Medium | Cabot Technology Solution](https://medium.com/@cabot_solutions/ansible-and-docker-the-best-combination-for-an-efficient-software-product-management-28c86cfebe90)
+
+> Docker is an open source containerization platform that aids in the automation of application deployment within software containers.
+
+Testing is very important to ensure that the deployment is done correctly. To ensure zero downtime and successfully run applications, the following is a good approach.
+
+• Get the newest version of the application container
+• Run the old application in parallel with the new one
+• Run post-deployment tests
+• Notify 'etcd' about the new release (port, name, etc)
+• Convert 'nginx' configuration to point to the new release
+• Finally, halt the old release
+
 ## Setup the Ansible host
 
-1. Install pip 'sudo apt install pip'
+1. Install pip 'pip install --user --upgrade pip', do not use 'sudo apt install pip', otherwise you are changing your distro's pip and that will cause [errors](https://github.com/pypa/pip/issues/5221).
 
 ## Preparation Steps for the raspberries
 
