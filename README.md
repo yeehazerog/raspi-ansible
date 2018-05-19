@@ -18,6 +18,13 @@ A quick introduction as to why those two are important for this project.
 
 > Docker is an open source containerization platform that aids in the automation of application deployment within software containers.
 
+The following image ([Source:](https://djangostars.com/blog/what-is-docker-and-how-to-use-it-with-python/)) illustrates the important difference the usage of docker brings vs. using a virtual machine.
+
+<img src="images/containers-vms-together.png" width="400">
+
+Docker does not need the additional space for a operating systems per virutal machine.
+
+
 Testing is very important to ensure that the deployment is done correctly. To ensure zero downtime and successfully run applications, the following is a good approach.
 
 • Get the newest version of the application container
