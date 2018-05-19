@@ -101,6 +101,10 @@ In order to use Docker and Ansible, 'docker-py' needs to be available on the Ans
 
 A role is added to ansible 'docker' which installs docker on the raspberry. The sources for information are stated in the respective yml files (e.g. where to find the apt key for docker)
 
+## Mongo DB
+
+Get [Mongo DB from store.docker.com](https://store.docker.com/images/mongo) via 'docker pull mongo'.
+
 ## Interfaces to crypto exchanges
 
 Thanks to the amazing code published as [CCXT – CryptoCurrency eXchange Trading Library](https://github.com/ccxt/ccxt) the basis for getting the needed data is found. This section will deal with the addition of the relevant parts of that codebase.
