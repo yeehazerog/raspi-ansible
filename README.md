@@ -86,6 +86,10 @@ This is what they are all for:
 
 Within all of the directories but the "files" and "templates", if a file called main.yml exists, its contents will be automatically added to the playbook that calls the role.
 
+### Setup the raspberries
+In the directory where the ansible files reside execute `ansible-playbook -i hosts playbook.yml`.
+If you want to check the syntax of the ansible file first run `ansible-playbook -i hosts playbook.yml --syntax-check`.
+
 ## The Docker part
 
 Wait, we have jsut setup Ansible - it will make sure that all our raspberries are setup in exactly the same way and then specific additions are made if needed to some of them. Now why do we need Docker and what for?
