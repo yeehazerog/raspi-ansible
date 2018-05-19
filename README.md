@@ -18,7 +18,7 @@ A quick introduction as to why those two are important for this project.
 
 > Docker is an open source containerization platform that aids in the automation of application deployment within software containers.
 
-The following image ([Source:](https://djangostars.com/blog/what-is-docker-and-how-to-use-it-with-python/)) illustrates the important difference the usage of docker brings vs. using a virtual machine.
+The following image ([Source: djangostars](https://djangostars.com/blog/what-is-docker-and-how-to-use-it-with-python/)) illustrates the important difference the usage of docker brings vs. using a virtual machine.
 
 <img src="images/containers-vms-together.png" width="400">
 
@@ -26,23 +26,29 @@ Docker does not need the additional space for a operating systems per virutal ma
 
 **Terminology**
 
-.  Container — running instance that encapsulates required software. Containers are always created from images.
-.  Container can expose ports and volumes to interact with other containers or/and outer world.
-.  Container can be easily killed / removed and re-created again in a very short time.
-.  Image — basic element for every container. When you create an image every step is cached and can be reused (Copy On Write model). Depending on the image it can take some time to build it. Containers, on the other hand can be started from images right away.
-.  Port — a TCP/UDP port in its original meaning. To keep things simple let’s assume that ports can be exposed to the outer world (accessible from host OS) or connected to other containers — accessible only from those containers and invisible to the outer world.
-.  Volume — can be described as a shared folder. Volumes are initialized when a container is created. Volumes are designed to persist data, independent of the container’s lifecycle.
-.  Registry — the server that stores Docker images. It can be compared to Github — you can pull an image from the registry to deploy it locally, and you can push locally built images to the registry.
-.  Docker hub — a registry with web-interface provided by Docker Inc. It stores a lot of Docker images with different software.
+*  Container | Running instance that encapsulates required software. Containers are always created from images. Container can expose ports and volumes to interact with other containers or/and outer world. Container can be easily killed / removed and re-created again in a very short time.
+*  Image | Basic element for every container. When you create an image every step is cached and can be reused (Copy On Write model). Depending on the image it can take some time to build it. Containers, on the other hand can be started from images right away.
+*  Port | A TCP/UDP port in its original meaning. To keep things simple let’s assume that ports can be exposed to the outer world (accessible from host OS) or connected to other containers — accessible only from those containers and invisible to the outer world.
+*  Volume | Can be described as a shared folder. Volumes are initialized when a container is created. Volumes are designed to persist data, independent of the container’s lifecycle.
+*  Registry | The server that stores Docker images. It can be compared to Github — you can pull an image from the registry to deploy it locally, and you can push locally built images to the registry.
+*  Docker hub | A registry with web-interface provided by Docker Inc. It stores a lot of Docker images with different software.
+
+**Recommendations using Docker**
+
+* 1 application = 1 container.
+* Run process in foreground (don't use systemd, upstart or any other similar tools).
+* Keep data out of container — use volumes.
+* Do not use SSH (if you need to step into container you can use docker exec command).
+* Avoid manual configurations (or actions) inside container.
 
 Testing is very important to ensure that the deployment is done correctly. To ensure zero downtime and successfully run applications, the following is a good approach.
 
-. Get the newest version of the application container
-• Run the old application in parallel with the new one
-• Run post-deployment tests
-• Notify 'etcd' about the new release (port, name, etc)
-• Convert 'nginx' configuration to point to the new release
-• Finally, halt the old release
+* Get the newest version of the application container
+* Run the old application in parallel with the new one
+* Run post-deployment tests
+* Notify 'etcd' about the new release (port, name, etc)
+* Convert 'nginx' configuration to point to the new release
+* Finally, halt the old release
 
 ## Setup the Ansible host
 
