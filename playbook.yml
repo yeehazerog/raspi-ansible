@@ -10,8 +10,9 @@
   become: yes
 
 - name: Setup pip
-  hosts: jupyter
-  roles: 
+  hosts: raspberries
+  become: yes
+  roles:
     - pip
 
 - name: Install docker
@@ -19,8 +20,24 @@
   become: yes
   roles:
     - docker
+  tags: docker
 
-- name: Setup jupyter
-  hosts: jupyter
+- name: Install Python docker container
+  hosts: raspberries
+  become: yes
   roles:
-    - jupyter
+    - dockerPython
+  tags: python
+
+- name: Install Telegram docker container
+  hosts: raspberries
+  become: yes
+  roles:
+    - dockerTelegram
+  tags: telegram
+
+#- name: Setup jupyter
+#  hosts: jupyter
+#  roles:
+#    - jupyter
+#  tags: jupyter
