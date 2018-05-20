@@ -1,0 +1,2 @@
+dockerfile_dir: 'storage/docker/applications/python'
+dockerfile: '{{ dockerfile_dir }}/Dockerfile'

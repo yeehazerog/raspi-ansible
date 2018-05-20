@@ -1,0 +1,15 @@
+- name: Create directory for doker application on raspberry
+  file:
+    path: "{{ dockerfile_dir }}"
+    owner: pi
+    group: pi
+    state: directory
+  become: yes
+
+- name: Copy Dockerfile
+  copy:
+    src: Dockerfile
+    dest: "{{ dockerfile }}"
+    owner: pi
+    group: pi
+    mode: 0644

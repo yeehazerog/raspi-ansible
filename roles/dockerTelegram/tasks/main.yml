@@ -1,0 +1,26 @@
+- name: Create directory for telegram docker application on raspberry
+  file:
+    path: "{{ dockerfile_dir }}"
+    owner: pi
+    group: pi
+    state: directory
+  become: yes
+
+- name: Copy Dockerfile
+  copy:
+    src: Dockerfile
+    dest: "{{ dockerfile }}"
+    owner: pi
+    group: pi
+    mode: 0644
+
+- name: Copy telegram-pyhton-bot directory
+  copy:
+    src: python-telegram-bot/
+    dest: "{{ telegram_bot_dir }}"
+    owner: pi
+    group: pi
+    mode: 0664
+
+- name: Install telegram-pyhton-bot
+  shell: "python setup.py install"
