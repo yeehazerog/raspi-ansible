@@ -16,4 +16,18 @@ host --> switch
 switch --> RPI0
 switch --> RPI1
 
+' notes
+note right of host
+  This is the ansible host.
+  192.168.8.103 (WiFi)
+end note
+
+note left of RPI0
+  192.168.8.110.
+end note
+
+note right of RPI1
+  192.168.8.x.
+end note
+
 @enduml
