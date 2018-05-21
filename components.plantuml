@@ -7,12 +7,14 @@ title            Components and Network
 component [Ansible host\nLaptop] as host
 
 component [Switch] as switch
+component [Modem] as modem
 
-component [Raspberry 1] as RPI1
+component [Raspberry 1] as RPI1 #yellow
 component [Raspberry 0] as RPI0
 
 ' links
 host --> switch
+switch -right-> modem
 switch --> RPI0
 switch --> RPI1
 
