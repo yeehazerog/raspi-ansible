@@ -20,6 +20,7 @@ cloud "web" {
 ' links
 host --> switch
 switch -right-> modem
+modem .right.> HTTP
 switch --> RPI0
 switch --> RPI1
 
