@@ -8,8 +8,8 @@ component [Ansible host\nLaptop] as host
 
 component [Switch] as switch
 
-component [Raspberry 0] as RPI0
 component [Raspberry 1] as RPI1
+component [Raspberry 0] as RPI0
 
 ' links
 host --> switch
