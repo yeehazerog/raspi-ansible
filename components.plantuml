@@ -1,0 +1,19 @@
+@startuml
+
+scale max 600 width
+
+title Components and Network
+
+component "Ansible host"
+
+component "Switch"
+
+component "RPI0"
+component "RPI1"
+
+' links
+[Ansible host] --> [Switch]
+[Switch] --> [RPI0]
+[Switch] --> [RPI1]
+
+@enduml
