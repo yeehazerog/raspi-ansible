@@ -8,9 +8,14 @@ component [Ansible host\nLaptop] as host
 
 component [Switch] as switch
 component [Modem] as modem
+component [Web] as web
 
 component [Raspberry 1] as RPI1 #yellow
 component [Raspberry 0] as RPI0
+
+cloud "web" {
+  modem .right.> HTTP
+}
 
 ' links
 host --> switch
