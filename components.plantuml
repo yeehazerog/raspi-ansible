@@ -4,16 +4,16 @@ scale max 600 width
 
 title            Components and Network
 
-component "Ansible host"
+component [Ansible host\nLaptop] as host
 
-component "Switch"
+component [Switch] as switch
 
-component "RPI0"
-component "RPI1"
+component [Raspberry 0] as RPI0
+component [Raspberry 1] as RPI1
 
 ' links
-[Ansible host] --> [Switch]
-[Switch] --> [RPI0]
-[Switch] --> [RPI1]
+host --> switch
+switch --> RPI0
+switch --> RPI1
 
 @enduml
