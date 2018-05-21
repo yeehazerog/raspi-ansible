@@ -2,7 +2,7 @@
 
 scale max 600 width
 
-title Components and Network
+title            Components and Network
 
 component "Ansible host"
 
