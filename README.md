@@ -52,6 +52,8 @@ Testing is very important to ensure that the deployment is done correctly. To en
 
 ## Setup the Ansible host
 
+![components.plantuml](https://g.gravizo.com/source/svg?https://raw.githubusercontent.com/yeehazerog/raspi-ansible/master/components.plantuml)
+
 1. Install pip 'pip install --user --upgrade pip', do not use 'sudo apt install pip', otherwise you are changing your distro's pip and that will cause [errors](https://github.com/pypa/pip/issues/5221).
 
 ## Preparation Steps for the raspberries
