@@ -108,8 +108,8 @@ In order to use Docker and Ansible, 'docker-py' needs to be available on the Ans
 A role is added to ansible 'docker' which installs docker on the raspberry. The sources for information are stated in the respective yml files (e.g. where to find the apt key for docker)
 
 ### Variables in Docker
-[vcupalov.com](https://vsupalov.com/docker-arg-env-variable-guide/) provides an excellent overview on the different variables used in docker and docker-compose. THe following image by vsupalov provides a comprehensive visualization of the concept.
-<img src="images/docker_environment_build_args_overview.png" width="400">
+[vcupalov.com](https://vsupalov.com/docker-arg-env-variable-guide/) provides an excellent overview on the different variables used in docker and docker-compose. The following image by vsupalov provides a comprehensive visualization of the concept.
+<img src="images/docker_environment_build_args_overview.png" width="450">
 
 ## Mongo DB
 
