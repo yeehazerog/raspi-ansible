@@ -107,6 +107,12 @@ In order to use Docker and Ansible, 'docker-py' needs to be available on the Ans
 
 A role is added to ansible 'docker' which installs docker on the raspberry. The sources for information are stated in the respective yml files (e.g. where to find the apt key for docker)
 
+### Docker user - avoid sudo usage
+
+1. Create the docker group. `sudo groupadd docker`
+2. Add your user to the docker group. `sudo usermod -aG docker $USER`
+3. Log out and log back in so that your group membership is re-evaluated.
+
 ### Variables in Docker
 [vcupalov.com](https://vsupalov.com/docker-arg-env-variable-guide/) provides an excellent overview on the different variables used in docker and docker-compose. The following image by vsupalov provides a comprehensive visualization of the concept.
 <img src="images/docker_environment_build_args_overview.png" width="450">
