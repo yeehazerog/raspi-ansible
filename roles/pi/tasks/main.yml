@@ -1,5 +1,8 @@
+
 ---
 # files: main.yml
+- set_fact:
+    real_ansible_host: "{{ ansible_host }}"
 
 - name: 'Transfer init scripts'
   become: yes
@@ -11,8 +14,10 @@
   become_method: sudo
   shell: /home/pi/init/anti-raspbian-bloat.sh
 
-- apt: update_cache=yes
-  name: 'Update apt cache'
+- name: 'Update apt cache'
+  apt: 
+    update_cache: yes
+    cache_valid_time: 3600
   become: yes
   become_method: sudo
 
@@ -20,6 +25,7 @@
   name: 'Upgrade apt dist'
   become: yes
   become_method: sudo
+  register: task_result
 
 #- name: 'Reboot'
 #  become: yes
@@ -28,3 +34,30 @@
 #  async: 0
 #  poll: 0
 #  ignore_errors: true
+
+- name: 'Reboot'
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+  ignore_errors: true
+
+# when: task_result is changed
+
+- name: 'Wait for rpi to come back'
+  wait_for_connection:
+    connect_timeout: 40
+    sleep: 5
+    delay: 5
+    timeout: 300
+
+- name: 'Wait differently for rpi to come back'
+  local_action: wait_for host={{ real_ansible_host }} port=22 state=started delay=10
+  become: false
+
+- name: 'Remove useless packages from the cache'
+  apt:
+    autoclean: yes
+
+- name: 'Remove dependencies that are no longer required'
+  apt:
+    autoremove: yes

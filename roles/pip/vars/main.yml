@@ -1,8 +1,9 @@
 ---
 # file: /pip/vars/main.yml
-
 pip_download_dest: /tmp
-pip_version:
+pip_version: "20.0.*"
+pip_get_pip_version: "latest"
+pip_executable: "pip"
 python: python3
 pip: pip3
 pip_proxy: ''
