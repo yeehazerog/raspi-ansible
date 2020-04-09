@@ -2,13 +2,14 @@
 # file: docker/defaults/main.yml
 
 docker_edition: "ce"
+raspbian_dist: "buster"
 docker_channel: "edge"
 
 # check docker release notes: https://docs.docker.com/release-notes/docker-ce/#edge-releases
 # check docker compose release notes: https://docs.docker.com/release-notes/docker-compose/
-docker_version: "18.05.0"
+docker_version: "19.03.0"
 docker_install_docker_compose: True
-docker_compose_version: "1.21.0"
+docker_compose_version: "2.00.0"
 
 docker_users: ['pi']
 
@@ -21,6 +22,7 @@ docker_daemon_options: []
 docker_daemon_environment: []
 
 # get official docker key and repository soruce from: https://docs.docker.com/install/linux/docker-ce/debian/#set-up-the-repository
+# current in Apr 2020: https://download.docker.com/linux/raspbian/dists/buster/edge/
 docker_apt_key: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
 docker_repository: "deb [arch=armhf] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_channel }}"
 docker_apt_package_name: "{{ docker_version }}~{{ docker_edition }}~3-0~{{ ansible_distribution | lower }}"

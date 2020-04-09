@@ -1,36 +1,56 @@
 ---
 # file: /docker/tasks/main.yml
 
-- name: Fail if Docker version is < 18.04
+- name: Fail if Docker version is < 19.03
   fail:
-    msg: "docker_version must be >= 18.04, yours is set to {{ docker_version }}."
-  when: docker_version is version_compare("18.04", "<")
+    msg: "docker_version must be >= 19.03, yours is set to {{ docker_version }}."
+  when: docker_version is version_compare("19.03", "<")
 
-- name: Install Docker and role dependencies
+# Deprecated
+#- name: Install Docker and role dependencies
+#  apt:
+#    name: "{{ item }}"
+#    state: "present"
+#    install_recommends: False
+#  with_items:
+#    - "apt-transport-https"
+#    - "ca-certificates"
+#    - "software-properties-common"
+#    - "cron"
+
+- name: Install aptitude using apt
   apt:
-    name: "{{ item }}"
-    state: "present"
+    name: ['aptitude']
+    state: "latest"
+    update_cache: True
+    force_apt_get: True
+
+- name: Install required system packages / docker role dependencies
+  apt:
+    name: ['apt-transport-https', 
+      'ca-certificates', 
+      'software-properties-common',
+      'cron']
+    state: "latest"
+    update_cache: True
     install_recommends: False
-  with_items:
-    - "apt-transport-https"
-    - "ca-certificates"
-    - "software-properties-common"
-    - "cron"
 
 - name: Get upstream APT GPG key
   apt_key:
-    id: "{{ docker_apt_key }}"
-    keyserver: "{{ ansible_local.core.keyserver
-                   if (ansible_local|d() and ansible_local.core|d() and
-                       ansible_local.core.keyserver)
-                   else 'hkp://pool.sks-keyservers.net' }}"
+    #id: "{{ docker_apt_key }}"
+    #keyserver: "{{ ansible_local.core.keyserver
+    #               if (ansible_local|d() and ansible_local.core|d() and
+    #                   ansible_local.core.keyserver)
+    #               else 'hkp://pool.sks-keyservers.net' }}"
+    url: https://download.docker.com/linux/raspbian/gpg
     state: "present"
 
 - name: Configure upstream APT repository
   apt_repository:
-    repo: "{{ docker_repository }}"
+    #repo: "{{ docker_repository }}"
+    repo: deb https://download.docker.com/linux/raspbian buster stable
     state: "present"
-    update_cache: True
+    #update_cache: True
 
 - name: Install Docker
   apt:

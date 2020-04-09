@@ -1,30 +1,46 @@
 ---
 # file: playbook.yml
 
-# Tested and working 29-Mar-2020, commented until remaining tests are done
-#- name: Ansible Playbook for configuring brand new Raspberry Pi
-#  hosts: raspberries
-#  gather_facts: True
-#  roles:
-#    - pi
-#  remote_user: pi
-#  become: yes
-#  tags: initrpi
-
-- name: Setup pip
+## Tested and verified 29-Mar-2020
+- name: Ansible Playbook for configuring brand new Raspberry Pi
   hosts: raspberries
+  gather_facts: False
   roles:
-    - pip
+    - pi
   remote_user: pi
   become: yes
-  tags: pip
+  tags: initrpi
 
-#- name: Install docker
+#- name: Setup pip
 #  hosts: raspberries
-#  become: yes
 #  roles:
-#    - docker
-#  tags: docker
+#    - pip
+#  remote_user: pi
+#  become: yes
+#  tags: pip
+
+## Tested and verified 09-Apr-2020
+- name: Install pip via apt
+  hosts: raspberries
+  roles:
+    - pip-via-apt
+  remote_user: pi
+  become: yes
+  tags: pip-via-apt
+
+- name: Install docker
+  hosts: raspberries
+  become: yes
+  roles:
+    - docker
+  tags: docker
+
+- name: Install docker-arm
+  hosts: raspberries
+  become: yes
+  roles:
+    - docker_arm
+  tags: dockerarm
 
 #- name: Install Python docker container
 #  hosts: raspberries
